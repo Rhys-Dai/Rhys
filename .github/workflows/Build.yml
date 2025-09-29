@@ -15,7 +15,7 @@ jobs:
       - name: 设置 .NET 环境
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'  # 配置 .NET SDK 版本
+          dotnet-version: '8.0.1'  # 配置 .NET SDK 版本
 
       - name: 还原依赖
         run: dotnet restore
