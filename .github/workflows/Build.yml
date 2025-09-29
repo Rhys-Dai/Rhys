@@ -15,9 +15,9 @@ jobs:
       - name: 设置.NET环境（用户目录）
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
-          # 使用当前用户的主目录（一定有权限）
-          dotnet-install-dir: '${{ runner.user }}/dotnet'
+        dotnet-version: '8.0.x'
+    
+        dotnet-install-dir: "${{ runner.user }}/dotnet"
 
       - name: 验证.NET安装
         run: dotnet --version  # 检查是否安装成功
