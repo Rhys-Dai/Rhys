@@ -3,19 +3,24 @@ name: 自托管运行器测试工作流
 on:
   push:
     branches:
-      - develop  # 当 main 分支有代码推送时触发
+      - main
 
 jobs:
   build:
-    runs-on: self-hosted  # 指定使用自托管运行器
+    runs-on: self-hosted
     steps:
       - name: 检出代码
-        uses: actions/checkout@v4  # 拉取仓库代码到运行器
+        uses: actions/checkout@v4
 
-      - name: 设置 .NET 环境
+      - name: 设置.NET环境（用户目录）
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.1'  # 配置 .NET SDK 版本
+          dotnet-version: '8.0.x'
+          # 使用当前用户的主目录（一定有权限）
+          dotnet-install-dir: '${{ runner.user }}/dotnet'
+
+      - name: 验证.NET安装
+        run: dotnet --version  # 检查是否安装成功
 
       - name: 还原依赖
         run: dotnet restore
