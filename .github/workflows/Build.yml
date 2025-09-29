@@ -12,18 +12,19 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
-      - name: 设置.NET环境（用户目录）
+      - name: 设置 .NET 环境（Windows 路径）
         uses: actions/setup-dotnet@v4
         with:
-        dotnet-version: '8.0.x'
-    
-        dotnet-install-dir: "${{ runner.user }}/dotnet"
+          dotnet-version: '8.0.x'
+          # Windows 系统必须使用反斜杠 \，直接指定具体用户目录
+          dotnet-install-dir: 'C:\Users\Dai.Rhys\dotnet'  # 替换为你的实际用户目录
 
-      - name: 验证.NET安装
-        run: dotnet --version  # 检查是否安装成功
+      - name: 验证 .NET 安装
+        run: dotnet --version
 
       - name: 还原依赖
         run: dotnet restore
 
       - name: 构建项目
         run: dotnet build --configuration Release
+
