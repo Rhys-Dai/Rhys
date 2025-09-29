@@ -1,2 +1,5 @@
-ECHO ���ڴ�״̬��
+ECHO ڴ״̬
 this is develop branch
+
+world
+
